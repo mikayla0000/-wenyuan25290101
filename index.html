@@ -2371,7 +2371,7 @@ const __repairV4=repair;repair=function(d){const had=!!(d&&d._v5);d=__repairV4(d
 /* ---------- AI 命名核心（只用傳入的資料物件 D，示範資料建立時也能用） ---------- */
 const shortCo=n=>(n||'客戶').replace(/(股份有限公司|有限公司|工作室|商行|（.*?）)$/g,'').replace(/（.*?）/g,'')||n;
 const namePattern=n=>String(n||'').toLowerCase().replace(/\d+/g,'#').replace(/#([_\-\s]*#)+/g,'#');
-function isGarbled(name){const b=String(name||'').replace(/\.[^.]+$/,'');return /%[0-9a-f]{2}/i.test(b)||/[�]|Ã|Â|æ|å|ç|ä|ï¿½|�/.test(b)||/^(img|dsc|dcim|scan|scanned|image|photo|pxl|screenshot|line_?\w*|document|file|新增|未命名|掃描|文件|圖片|新文件)[\s_\-]*[\d_\-()\s]*$/i.test(b)||/^[0-9a-f]{12,}$/i.test(b)||/^[\d_\-\s()]+$/.test(b)}
+function isGarbled(name){const b=String(name||'').replace(/\.[^.]+$/,'');return /%[0-9a-f]{2}/i.test(b)||/[\uFFFD]|Ã|Â|æ|å|ç|ä|ï¿½/.test(b)||/^(img|dsc|dcim|scan|scanned|image|photo|pxl|screenshot|line_?\w*|document|file|新增|未命名|掃描|文件|圖片|新文件)[\s_\-]*[\d_\-()\s]*$/i.test(b)||/^[0-9a-f]{12,}$/i.test(b)||/^[\d_\-\s()]+$/.test(b)}
 function periodOf(kind,text){const roc=new Date().getFullYear()-1911;text=text||'';
   if(kind==='none')return {p:'',ok:true};
   if(kind==='contract'){const ds=[...text.matchAll(/(\d{2,3})\s*年\s*(\d{1,2})\s*月/g)];if(ds.length>=2)return {p:`${ds[0][1]}.${pad(ds[0][2])}-${ds[ds.length-1][1]}.${pad(ds[ds.length-1][2])}`,ok:true};return {p:'期間待確認',ok:false}}
