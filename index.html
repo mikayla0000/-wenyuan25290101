@@ -630,6 +630,13 @@ body:has(.public-site) .wenyuan-service-pet:not(.staff-pet).is-open{box-shadow:-
 
 .pagehead{flex-wrap:wrap;row-gap:12px}.pagehead>div:first-child{min-width:240px;flex:1 1 240px}.pagehead .head-actions{flex-wrap:wrap;justify-content:flex-end;row-gap:8px}
 .pagehead .head-actions{flex-shrink:1;min-width:0;max-width:100%}
+/* 首頁頂列：文字不換行，空間不夠時先收小間距、再隱藏次要資訊 */
+.h3-live.in-head{display:none!important}
+.public-header .public-brand small,.public-header nav button,.public-header .client-entry,.public-header .staff-entry{white-space:nowrap}
+.public-header .client-entry,.public-header .staff-entry{flex-direction:row;align-items:center}
+@media (min-width:901px) and (max-width:1400px){.public-header{gap:16px}.public-header nav{gap:14px}.public-header nav button{font-size:13px}}
+@media (min-width:901px) and (max-width:1240px){.public-header .public-view-count{display:none}.public-header nav{gap:10px}.public-header .public-brand small{display:none}}
+@media (min-width:901px) and (max-width:1080px){.public-header nav button{font-size:12px}.public-header nav{gap:8px}}
 
 /* 原版圖示尺寸（由原版網站實測） */
 :where(.ai-assistant-icon svg.lucide-bot){width:24px;height:24px}
