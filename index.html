@@ -620,6 +620,17 @@ body:has(.public-site) .wenyuan-service-pet:not(.staff-pet).is-open{box-shadow:-
 
 .nm-bottom{display:grid;gap:14px;margin-top:14px}
 
+/* 員工側欄精簡：選單佔滿，底部只留一行說明 */
+.side-foot-slim{padding-top:6px!important;border-top:1px solid #e5ebf2}
+.side-foot-slim .side-meta{margin:0;font-size:11px;display:flex;align-items:center;gap:4px}
+.head-id{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.head-id-av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:700;overflow:hidden;flex:none}
+.head-id-av img{width:100%;height:100%;object-fit:cover}
+.app-menu{display:grid;gap:10px}
+
+.pagehead{flex-wrap:wrap;row-gap:12px}.pagehead>div:first-child{min-width:240px;flex:1 1 240px}.pagehead .head-actions{flex-wrap:wrap;justify-content:flex-end;row-gap:8px}
+.pagehead .head-actions{flex-shrink:1;min-width:0;max-width:100%}
+
 /* 原版圖示尺寸（由原版網站實測） */
 :where(.ai-assistant-icon svg.lucide-bot){width:24px;height:24px}
 :where(.ai-assistant-icon svg.lucide-file-check-corner){width:24px;height:24px}
@@ -1239,9 +1250,9 @@ VIEWS.home=()=>{AFTER.push(hero3dMount);
       <p>文圓來自長期對帳務、稅務與客戶需求的觀察。我們相信，客戶需要的不只是申報與記帳，也需要有人耐心說明、主動提醒，並在不同經營階段持續陪伴。</p>
       <p>因此，我們持續整理電話、訊息、文件收發、行事曆提醒、工作進度與會議紀錄，讓每一件事與每一份資料都能被追蹤，減少等待與重複確認。</p></div>
       <div class="public-about-values">${[['01','耐心說明','把帳務與流程說清楚，讓客戶知道現在做到哪裡。'],['02','主動提醒','行程、缺件與重要日期提前通知，降低遺漏與來回詢問。'],['03','長期陪伴','從新設、穩定營運到不同稅務階段，都有可接續的紀錄。']].map(([n,t,d])=>`<article><span>${n}</span><strong>${t}</strong><p>${d}</p></article>`).join('')}</div></section>
-    ${carouselHTML()}
     <section class="public-announcements" id="notice"><div class="announcement-heading"><div><p>OFFICE NOTICE</p><h2>最新公告</h2><span>上課、聚餐或全所外出會先在這裡通知，來訪前可以先確認。</span></div><button data-a="pubNotices">${ic('bell')}查看全部公告</button></div>
       ${monthGrid(y,mo,{events:evs,compact:true,nav:'pubCal'})}</section>
+    ${carouselHTML()}
     <section class="public-trust"><p>適合正在尋找穩定帳務協助的</p><div>${['小型公司','行號商家','自由工作者','新創團隊','專業服務業'].map(t=>`<span>${t}</span>`).join('')}</div></section>
     <section class="public-section" id="services"><div class="section-heading"><p>OUR SERVICES</p><h2>你在經營，我們把帳務流程接起來</h2><span>每項服務內容與應備資料，會依實際案件由承辦人確認。</span></div>
       <div class="service-grid">${[['briefcase-business','公司、行號設立','從籌備、登記到開始營運，協助整理流程與應備資料。',['設立與變更登記','發票與稅籍申請','初期帳務安排']],['file-text','記帳與申報協助','依照每期資料整理進度，清楚提醒缺件與後續處理。',['日常帳務整理','營業稅與各類申報','進度與缺件查詢']],['users','薪資與人員異動','協助整理員工到離職期間需要提供的基本資料。',['加退保資料整理','薪資與扣繳作業','異動文件提醒']],['heart-handshake','專業合作轉介','遇到法律、會計師簽證或保險需求時，協助銜接合作夥伴。',['律師合作轉介','會計師簽證轉介','企業保險諮詢轉介']]].map(([i,t,d,l],n)=>`<article><span class="service-no">0${n+1}</span>${ic(i)}<h3>${t}</h3><p>${d}</p><ul>${l.map(x=>`<li>${ic('check')}${x}</li>`).join('')}</ul><button data-a="pubInquiry" data-svc="${t}">詢問這項服務</button></article>`).join('')}</div></section>
@@ -1262,7 +1273,7 @@ VIEWS.home=()=>{AFTER.push(hero3dMount);
       <div class="public-faq" data-orientation="vertical">${FAQS.map(([q,a],i)=>{const open=SESS.faqOpen===i;return `<div data-state="${open?'open':'closed'}" data-slot="accordion-item" class="border-b last:border-b-0"><h3 data-state="${open?'open':'closed'}" class="flex"><button type="button" aria-expanded="${open}" data-state="${open?'open':'closed'}" data-slot="accordion-trigger" class="flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline [&amp;[data-state=open]&gt;svg]:rotate-180" data-a="faq" data-i="${i}">${q}${ic('chevron-down','pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200')}</button></h3><div data-state="${open?'open':'closed'}" role="region" data-slot="accordion-content" class="overflow-hidden text-sm" ${open?'':'hidden'}><div class="pt-0 pb-4">${a}</div></div></div>`}).join('')}</div></section>
     <section class="public-contact" id="contact"><div><p>START A CONVERSATION</p><h2>先把你的情況告訴我們</h2><span>送出後會建立一筆諮詢紀錄，出現在員工工作臺的客服中心，由承辦人回覆。</span></div><div><button data-a="pubInquiry">填寫諮詢需求</button><button data-a="go" data-to="#client">已是客戶？進入客戶專區</button></div></section>
   </main>
-  <footer class="public-footer"><div class="public-brand">${brandMark()}<span><strong>文圓</strong><small>稅務記帳士事務所</small></span></div><p>台中地區服務示範 · ${o.morningStart}–${o.morningEnd}、${o.afternoonStart}–${o.afternoonEnd} · 週六、週日休假</p><span>團隊人物與案例均為虛構示範；合作與品牌資訊以公開來源及客戶同意內容為準 </span><span class="public-dl"><button type="button" data-a="getWYApp"><img src="${IMG.logo}" alt="">下載文圓網站 App</button><button type="button" data-a="getYYApp"><img src="${IMG.yy}" alt="">下載圓圓聊天室 App</button></span></footer>
+  <footer class="public-footer"><div class="public-brand">${brandMark()}<span><strong>文圓</strong><small>稅務記帳士事務所</small></span></div><p>台中地區服務示範 · ${o.morningStart}–${o.morningEnd}、${o.afternoonStart}–${o.afternoonEnd} · 週六、週日休假</p><span>團隊人物與案例均為虛構示範；合作與品牌資訊以公開來源及客戶同意內容為準 </span></footer>
   </div>${themeControl()}`;
 };
 A.jump=d=>{SESS.pubMenu=false;saveSess();const el=document.getElementById(d.id);if(el){const top=el.getBoundingClientRect().top+window.scrollY-(d.id==='top'?0:86);window.scrollTo({top,behavior:'smooth'})}const n=$('.public-header nav');n&&n.classList.remove('open')};
@@ -1506,7 +1517,7 @@ C.avatarFile=el=>{const f=el.files[0];if(!f)return;if(f.size>5*1024*1024){toast(
 A.avatarRemove=d=>mutate(S=>{if(d.k.startsWith('C:'))byId(S.clients,d.k.slice(2)).logo='';else byId(S.accounts,d.k).avatar=''});
 function sidebarInner(tab,badges){const u=me();return `<div data-sidebar="sidebar" data-slot="sidebar-inner" class="flex h-full w-full flex-col bg-sidebar"><div data-slot="sidebar-header" data-sidebar="header" class="flex flex-col gap-2 p-2"><div class="brand"><span class="brand-logo-shell"><img class="brand-logo" src="${IMG.logo}" alt=""><span class="sparkle-wordmark">文圓</span></span><div><strong>文圓</strong><small>稅務記帳士事務所</small></div></div></div>
   <div data-slot="sidebar-content" data-sidebar="content" class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto"><p class="navcaption">事務所工作台</p><ul data-slot="sidebar-menu" data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-1">${MODULES.map(([k,t,i])=>`<li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative"><button data-slot="sidebar-menu-button" data-sidebar="menu-button" data-size="default" data-active="${tab===k}" class="${NAVBTN}" data-a="stab" data-t="${k}">${ic(i)}<span>${t}</span>${badges[k]?`<b class="wy-navbadge">${badges[k]}</b>`:''}</button></li>`).join('')}</ul></div>
-  <div data-slot="sidebar-footer" data-sidebar="footer" class="flex flex-col gap-2 p-2"><div class="sidebar-profile">${avatarBox('sidebar-avatar','我',u.avatar,'上傳我的員工帳號的 Logo 或照片','avatarPick',u.id)}<div><strong>我的識別圖片</strong><small>可上傳照片或 Logo</small></div></div><div class="private-label">${ic('lock-keyhole','',16)}<span>私密示範工作區</span></div><button type="button" class="wy-dl-side" data-a="getWYApp"><img src="${IMG.logo}" alt="">下載文圓網站 App</button><button type="button" class="wy-dl-side" data-a="getYYApp"><img src="${IMG.yy}" alt="">下載圓圓聊天室 App</button><p class="side-meta">文圓 · 核心流程原型<br>所有資料均為虛構</p></div></div>`}
+  <div data-slot="sidebar-footer" data-sidebar="footer" class="flex flex-col gap-2 p-2 side-foot-slim"><p class="side-meta">${ic('lock-keyhole','',12)} 私密示範工作區 · 資料均為虛構</p></div></div>`}
 const clockText=()=>{const d=new Date();return {day:`${d.getMonth()+1}/${d.getDate()}（週${WK[d.getDay()]}）`,t:`${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`}};
 VIEWS.staff=()=>{
   if(!SESS.staff||!me()||me().status!=='在職'){const first=S.accounts.find(a=>a.id==='A'&&a.status==='在職')||S.accounts.find(a=>a.status==='在職');SESS.staff=first.id;saveSess()}
@@ -1557,7 +1568,7 @@ STAFF.dash=()=>{const u=me();const hidden=u.homeHidden||[];const vis=k=>!hidden.
   const reachable=S.accounts.filter(a=>a.status==='在職'&&a.presence==='available');
   const metrics=vis('summary')?`<div class="metricgrid">${[['未結客服',openTh.length,'件','需要跟進的客戶詢問','service','headset'],['待審預約',pendingBk.length,'筆','等待接受或提出改期','bookings','calendar-days'],['進行中的工作',activeTasks.length,'項','尚未完成的工作任務','work','clipboard-list'],['可聯繫人員',reachable.length,'人','全所目前聯繫狀態','calls','users']].map(([t,v,un,d,k,i],n)=>`<button class="metric metric-${n}" data-a="stab" data-t="${k}"><div class="row spread"><span>${t}</span>${ic(i,'',21)}</div><p><strong>${pad(v)}</strong><span>${un}</span></p><small>${d}</small></button>`).join('')}</div>`:'';
   const att=vis('attendance')?myAttendanceCard():'';
-  return pagehead('工作總覽','掌握客服、預約與工作進度',`<button type="button" class="btn quiet" data-a="homeSettings">${ic('layout-dashboard','',17)}首頁顯示設定</button><button type="button" class="btn " data-a="f3Toggle">${ic('coffee','',17)}F3 快速暫離</button><button type="button" class="btn quiet" data-a="f3Settings">F3 暫離設定</button><button type="button" class="btn " data-a="statusEdit">${ic('users','',17)}更新我的狀態</button><button type="button" class="btn " data-a="simChat">${ic('message-circle','',17)}模擬客服對話</button><button type="button" class="btn primary" data-a="newService">${ic('plus','',17)}新增客服紀錄</button>`)+
+  return pagehead('工作總覽','掌握客服、預約與工作進度',`${headIdentity(u)}<button type="button" class="btn quiet" data-a="homeSettings">${ic('layout-dashboard','',17)}首頁顯示設定</button><button type="button" class="btn " data-a="f3Toggle">${ic('coffee','',17)}F3 快速暫離</button><button type="button" class="btn quiet" data-a="f3Settings">F3 暫離設定</button><button type="button" class="btn " data-a="statusEdit">${ic('users','',17)}更新我的狀態</button><button type="button" class="btn " data-a="simChat">${ic('message-circle','',17)}模擬客服對話</button><button type="button" class="btn primary" data-a="newService">${ic('plus','',17)}新增客服紀錄</button>`)+
   (metrics||att?`<div class="wy-dash-top ${att&&metrics?'':'single'}">${att}${metrics}</div>`:'')+
   (vis('notes')?notesBoard():'')+(vis('approvals')?approvalsPreview():'')+
   `<div class="dashboardgrid"><div class="stack">
@@ -1747,6 +1758,10 @@ A.yyAsk=d=>{const k=d.k;const c=YYA_CFG[k];if(!YYA[k])YYA[k]=[{by:'yy',at:nowISO
   sheet(c.title,`<div class="yy-ai-panel"><div class="yy-ai-log" id="yyaLog">${yyaLog(k)}</div><div class="yy-ai-chips">${c.chips.map(q=>`<button type="button" data-a="yyAskQ" data-q="${esc(q)}">${esc(q)}</button>`).join('')}</div><form class="yy-ai-form" data-f="yyAsk"><input name="q" required placeholder="輸入想問圓圓的事…" autocomplete="off"><button class="btn primary" type="submit">${ic('send','',15)}</button></form></div>`,{cls:'yy-ai-sheet',sub:c.sub});setTimeout(()=>{const l=$('#yyaLog');if(l)l.scrollTop=l.scrollHeight},20)};
 A.yyAskQ=d=>F.yyAsk({q:d.q});
 F.yyAsk=o=>{const k=window.__yyk;const q=(o.q||'').trim();if(!q)return;YYA[k].push({by:'me',at:nowISO(),text:q});YYA[k].push({by:'yy',at:nowISO(),text:yyaReply(k,q)});const l=$('#yyaLog');if(l){l.innerHTML=yyaLog(k);l.scrollTop=l.scrollHeight}const i=$('.yy-ai-form input');if(i)i.value=''};
+
+/* 工作總覽頂端：我的識別圖片＋下載 App（原本在左側欄底部，移到這裡讓側欄留給選單） */
+const headIdentity=u=>`<label class="btn quiet head-id" title="上傳我的員工帳號照片或 Logo"><span class="head-id-av" style="${u.avatar?'':`background:${esc(u.color)}`}">${u.avatar?`<img src="${u.avatar}" alt="">`:esc(u.name[0])}</span>我的識別圖片<input type="file" accept="image/*" hidden data-c="avatarFile" data-k="${u.id}"></label><button type="button" class="btn quiet" data-a="appMenu">${ic('download','',17)}下載 App</button>`;
+A.appMenu=()=>modal('下載 App',`<div class="app-menu"><button type="button" class="wy-dl-side" data-a="getWYApp"><img src="${IMG.logo}" alt="">下載文圓網站 App</button><button type="button" class="wy-dl-side" data-a="getYYApp"><img src="${IMG.yy}" alt="">下載圓圓聊天室 App</button></div>`,{sub:'安裝到手機或電腦桌面，圖示分別是文圓與圓圓。'});
 
 /* ================= 主管簽核 ================= */
 const APPROVAL_TYPES=['待確認','待預約','待審核','待簽名','待蓋章','待付款','需主管決定','其他'];
