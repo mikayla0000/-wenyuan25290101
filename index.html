@@ -638,6 +638,84 @@ body:has(.public-site) .wenyuan-service-pet:not(.staff-pet).is-open{box-shadow:-
 @media (min-width:901px) and (max-width:1240px){.public-header .public-view-count{display:none}.public-header nav{gap:10px}.public-header .public-brand small{display:none}}
 @media (min-width:901px) and (max-width:1080px){.public-header nav button{font-size:12px}.public-header nav{gap:8px}}
 
+/* AI 文件整理區塊：數字卡＋按鈕同一列，左右留白一致 */
+.ai-file-organizer .aio-body{display:grid;grid-template-columns:repeat(3,minmax(0,150px)) minmax(0,1fr);gap:12px;align-items:stretch;padding:4px 22px 14px}
+.aio-stat{border:1px solid #e3e9f0;border-radius:14px;padding:12px 16px;background:#f8fafc;display:grid;gap:2px}
+.aio-stat strong{font-size:26px;line-height:1.1;color:#16324a;font-variant-numeric:tabular-nums}
+.aio-stat span{font-size:12.5px;color:#5d6f86}
+.aio-body>.btn{justify-self:end;align-self:center}
+.ai-file-organizer .aio-rules{padding:0 22px 20px;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:760px){.ai-file-organizer .aio-body{grid-template-columns:repeat(3,minmax(0,1fr))}.aio-body>.btn{grid-column:1/-1;justify-self:stretch}}
+
+/* ===== v6：公司行事曆（月曆＋清單並排） ===== */
+.cal-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(320px,1fr);gap:16px;align-items:start;margin-top:15px}
+.cal-layout .office-calendar-panel,.cal-layout .office-calendar-admin{margin-top:0}
+.cal-legend{display:flex;flex-wrap:wrap;gap:6px 14px;padding:12px 4px 0;font-size:12px;color:#5d6f86}
+.cal-legend span{display:inline-flex;align-items:center;gap:6px}
+.cal-legend i{display:inline-block;width:12px;height:12px;min-height:0;padding:0;border-radius:4px}
+.cal-list{position:sticky;top:84px;max-height:calc(100vh - 100px);display:flex;flex-direction:column;overflow:hidden}
+.cal-list .panelhead p{font-size:12.5px}
+.calendar-count-mini{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#2b6cb8;background:#eef5fd;border-radius:999px;padding:5px 10px;white-space:nowrap}
+.cal-list .office-calendar-admin-list{overflow:auto;padding:0 14px 8px;display:grid;gap:14px}
+.cal-month h3{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;margin:6px 4px 6px;color:#16324a}
+.cal-month h3 small{font-weight:400;color:#8a94a3;font-size:12px}
+.office-calendar-admin-list .cal-item{display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:10px;align-items:start;padding:10px 8px;border:1px solid #e9eef4;border-radius:12px;margin-bottom:8px;flex-direction:row}
+.cal-item.is-group{background:#fbfaf5;border-color:#efe6c9}
+.cal-when{display:grid;text-align:center;background:#f3f6fa;border-radius:10px;padding:6px 2px}
+.cal-when b{font-size:15px;color:#16324a;font-variant-numeric:tabular-nums}
+.cal-when small{font-size:11px;color:#6a7b90}
+.cal-what{display:grid;gap:4px;min-width:0}
+.cal-what strong{font-size:14px;line-height:1.4}
+.cal-what>small{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:#6a7b90}
+.cal-type{border-radius:999px;padding:1px 8px;background:#eef2f7;color:#40546c;font-size:11px}
+.cal-type.type-課程研習{background:#e8f0fc;color:#2a5aa6}.cal-type.type-公司聚餐{background:#fdebe4;color:#a5481f}.cal-type.type-其他公告{background:#fbf3df;color:#7a5a12}.cal-type.type-客戶提醒{background:#efe9fb;color:#5a43a8}.cal-type.type-已有預約,.cal-type.type-北部出差,.cal-type.type-校外授課{background:#eef2f7;color:#40546c}
+.cal-act{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.cal-days summary{cursor:pointer;font-size:12px;color:#2b6cb8}
+.cal-days>div{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;padding:4px 0;border-top:1px dashed #e7e1cc}
+.cal-past{margin:6px 14px 14px;border:1px dashed #cdd6e1;background:#fff;border-radius:10px;padding:8px;font-size:13px;color:#40546c;cursor:pointer}
+.cal-kits-label{margin-top:22px}
+.cal-kit{margin-top:10px}
+.cal-kit .fixed-collection-title p{margin:2px 0 0}
+.cal-kit-act{padding:0 20px 16px}
+@media (max-width:1180px){.cal-layout{grid-template-columns:minmax(0,1fr)}.cal-list{position:static;max-height:none}}
+
+/* ===== v6：彈性打卡 ===== */
+.att-flex{display:flex;align-items:center;gap:5px;font-size:12px!important;color:#6a7b90;margin:8px 0 0!important}
+
+/* ===== v6：客戶專區簡易傳檔 ===== */
+.cq-drop{display:grid;justify-items:center;gap:6px;text-align:center;border:2px dashed #b9cfe0;border-radius:18px;padding:30px 16px;background:#f6fafd;cursor:pointer;color:#1f4f7a;transition:background .2s,border-color .2s;margin-top:6px}
+.cq-drop:hover,.cq-drop.is-over{background:#eaf3fb;border-color:#2b6cb8}
+.cq-drop strong{font-size:17px}
+.cq-drop small{color:#6a7b90}
+.cq-list{display:grid;gap:6px;margin-top:12px}
+.cq-file{display:grid;grid-template-columns:24px minmax(0,1fr) auto 28px;gap:8px;align-items:center;border:1px solid #e3e9f0;border-radius:10px;padding:8px 10px;background:#fff}
+.cq-file strong{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cq-file small{color:#8a94a3;font-size:12px}
+.cq-file button{border:0;background:none;color:#8a94a3;cursor:pointer;display:grid;place-items:center}
+.cq-send{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.cq-note{flex:1 1 240px;min-width:0;border:1px solid #d9e1ea;border-radius:12px;padding:10px 12px;font:inherit}
+.cq-alt{margin:12px 0 0;font-size:13px;color:#6a7b90}
+.cq-alt button{border:0;background:none;color:#2b6cb8;cursor:pointer;font:inherit;text-decoration:underline;padding:0 4px}
+.cq-req{border:1px solid #e3e9f0;border-radius:16px;padding:14px 16px;margin-top:12px;display:grid;gap:8px}
+.cq-req header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.cq-req h3{font-size:16px;margin:0}
+.cq-req header small{color:#6a7b90;font-size:12.5px}
+.cq-count{font-weight:700;color:#16324a;font-variant-numeric:tabular-nums}
+.cq-item{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid #f0f3f7}
+.cq-item strong{font-size:14px}
+.cq-item small{display:block;font-size:12px;color:#6a7b90}
+.cq-dot{width:22px;height:22px;border-radius:50%;border:2px solid #cdd6e1;display:grid;place-items:center}
+.cq-item.is-done .cq-dot{background:#1f7a55;border-color:#1f7a55;color:#fff}
+.cq-item.is-wait .cq-dot{border-color:#c9a04a;background:#fbf3df}
+.cq-item.is-wait small{color:#8a5a0c}
+.cq-item-act{display:flex;gap:6px;align-items:center}
+.cq-item-act .portal-btn{cursor:pointer}
+.cq-none{border:0;background:none;color:#6a7b90;font-size:12px;cursor:pointer;text-decoration:underline}
+@media (max-width:560px){.cq-item{grid-template-columns:24px minmax(0,1fr)}.cq-item-act{grid-column:2}}
+.office-calendar-admin-list .cal-item{grid-template-columns:54px minmax(0,1fr)}
+.cal-act{grid-column:2;justify-content:flex-start;margin-top:-2px}
+.cal-act .btn.small{padding:4px 10px;min-height:0;font-size:12.5px}
+
 /* 原版圖示尺寸（由原版網站實測） */
 :where(.ai-assistant-icon svg.lucide-bot){width:24px;height:24px}
 :where(.ai-assistant-icon svg.lucide-file-check-corner){width:24px;height:24px}
@@ -1686,8 +1764,8 @@ STAFF.ai=()=>{const rep=S.dailyReport;const use=S.usage[0][1];const docs=S.porta
   ${card('is-document','file-check-corner','內部文件整理專用','AI 文件整理員','<span class="badge blue">人工確認後更名</span>','讀取客戶上傳的圖片與文件，辨識公司、期間、文件類型與流水號，再依文圓規則提出建議檔名。',`<ul><li>${ic('check','',15)}保留原始檔名與原始檔</li><li>${ic('check','',15)}低信心、重複或敏感文件轉人工</li></ul>`,`<button class="btn" type="button" data-a="stab" data-t="naming">前往檔案命名審核</button>`)}
   </div>
   <section class="panel ai-file-organizer"><div class="panelhead"><div><p class="eyebrow">AI DOCUMENT ORGANIZER</p><h2>${ic('file-check-corner','',19)}文件辨識與建議檔名</h2><p>正式系統收到檔案後先建立建議，不直接覆蓋客戶原檔；承辦人確認後才更名及歸檔。</p></div><span class="badge blue">可追溯</span></div>
-    ${(()=>{const pend=docs.filter(p=>docReview(p)==='待審核');return `<div class="nm-summary"><div><strong>${pend.length}</strong><span>待審核</span></div><div><strong>${pend.filter(p=>p.garbled).length}</strong><span>檔名亂碼</span></div><div><strong>${docs.filter(p=>p.routeTo).length}</strong><span>已 @ 負責人</span></div><button class="btn primary" type="button" data-a="stab" data-t="naming">${ic('file-pen','',16)}前往檔案命名審核</button></div>`})()}
-    <div class="ai-file-rules"><span>固定格式：客戶名稱_文件期間_文件類型_流水號</span><span>支援圖片、PDF、Word、Excel</span><span>模糊、缺頁、重複與跨客戶文件會提醒</span></div></section>
+    ${(()=>{const pend=docs.filter(p=>docReview(p)==='待審核');return `<div class="aio-body"><div class="aio-stat"><strong>${pend.length}</strong><span>待審核</span></div><div class="aio-stat"><strong>${pend.filter(p=>p.garbled).length}</strong><span>檔名亂碼</span></div><div class="aio-stat"><strong>${docs.filter(p=>p.routeTo).length}</strong><span>已 @ 負責人</span></div><button class="btn primary" type="button" data-a="stab" data-t="naming">${ic('file-pen','',16)}前往檔案命名審核</button></div>`})()}
+    <div class="ai-file-rules aio-rules"><span>固定格式：客戶簡稱_期間_文件類型_流水號</span><span>支援圖片、PDF、Word、Excel</span><span>模糊、缺頁、重複與跨客戶文件會提醒</span></div></section>
   <section class="panel ai-operations-panel"><div class="panelhead"><div><p class="eyebrow">DAILY OPERATIONS ORGANIZER</p><h2>${ic('clipboard-list','',19)}AI 每日工作與會議整理</h2><p>彙整文件、客服、會議、行程與主管決定；每一項都能回查來源。</p></div><div class="row wrap"><button class="btn small" type="button" data-a="yyAsk" data-k="org"><img class="yy-btn-face" src="${IMG.yy}" alt="">請圓圓整理</button><button class="btn primary small" type="button" data-a="genReport">${ic('sparkles','',15)}重新產生今日草稿</button></div></div>
     ${rep?`<div class="ai-report"><div class="row spread"><div><strong>${rep.at.slice(0,10)} 營運摘要</strong><small>產生時間 ${mdhm(rep.at)} · ${esc(rep.by)}</small></div><span class="badge ${rep.confirmed?'green':'blue'}">${rep.confirmed?'主管已確認':'草稿'}</span></div><div class="ai-report-items">${rep.items.map(i=>`<article><span>${esc(i.k)}</span><div><p>${esc(i.t)}</p><small>來源：${esc(i.src)}</small></div></article>`).join('')||'<p class="empty">目前沒有需要整理的事項</p>'}</div>${rep.confirmed?'':`<button class="btn primary small" type="button" data-a="confirmReport">${ic('check','',15)}主管確認摘要</button>`}</div>`:'<div class="ai-report"><p class="empty">按「重新產生今日草稿」，依目前的文件、客服、交辦、行程與預約即時彙整。</p></div>'}</section>
   <div class="ai-control-grid"><section class="panel"><div class="panelhead"><div><p class="eyebrow">SYSTEM MAINTENANCE</p><h2>AI 系統維護提醒</h2></div><span class="badge blue">不自動刪除</span></div><div class="maintenance-list">${S.maintenance.map(x=>`<article><div><strong>${esc(x.title)}</strong><p>${esc(x.desc)}</p><small>${esc(x.cat)} · ${esc(x.cycle)} · 到期 ${esc(x.due)}</small></div><div>${st(x.status)}${x.status==='待確認'?`<button class="btn small" type="button" data-a="mtSet" data-id="${x.id}" data-s="已排程">確認排程</button>`:x.status!=='已完成'?`<button class="btn small" type="button" data-a="mtSet" data-id="${x.id}" data-s="已完成">標記完成</button>`:''}</div></article>`).join('')}</div></section>
@@ -1953,7 +2031,7 @@ STAFF.work=()=>{const u=me();const today=ymd(new Date());const sf=SESS.workStaff
   const corr=S.corrections.filter(c=>isAdmin()||c.staff===u.id).slice().reverse();
   const days={};S.attendance.filter(a=>isAdmin()||a.staff===u.id).forEach(a=>{const k=a.staff+'|'+ymd(a.at);(days[k]=days[k]||[]).push(a)});
   const attRows=Object.entries(days).sort((a,b)=>b[0].split('|')[1].localeCompare(a[0].split('|')[1])).slice(0,12).map(([k,ps])=>{const [sid,d]=k.split('|');const i=ps.find(p=>p.type==='上班'),o=[...ps].reverse().find(p=>p.type==='下班');const ex=S.extensions.find(e=>e.staff===sid&&ymd(e.start)===d);const ot=ps.filter(p=>/^OT\d|^第三班/.test(p.type));const late=ps.filter(p=>hm(p.at)>'19:00');return `<tr><td>${esc(staff(sid).name)}</td><td>${d}</td><td>${i?mdhm(i.at):'—'}</td><td>${o?mdhm(o.at):'—'}</td><td>${ex?`${mdhm(ex.start)}–${ex.end?mdhm(ex.end):'進行中'}`:ot.length?`第三班 ${ot.map(x=>hm(x.at)).join('–')}`:'—'}</td><td>${ex?esc(ex.result.replace('自動記錄為','')):'—'}</td><td>${late.length?`<button class="btn quiet small" type="button" data-a="correction" data-id="${(i||late[0]).id}">申請更正</button>`:'<span class="wy-faint wy-small">正常</span>'}</td></tr>`}).join('');
-  const clock=`<div class="clockpanel"><div><p class="eyebrow">${today} · ${esc(u.name)}</p><h2>${!s.in?'尚未開始今日出勤':!s.out?'上班中':'今日已完成出勤'}</h2><p>上班 ${s.in?hm(s.in.at):'—'}　下班 ${s.out?hm(s.out.at):'—'}${s.ext?`　延長工作 ${hm(s.ext.at)} 起`:''}</p>${otBlock(u.id)}</div><div class="row wrap"><button class="btn primary" type="button" data-a="punch" data-t="上班" ${s.in?'disabled':''}>${ic('log-in','',17)}上班打卡</button><button class="btn" type="button" data-a="punch" data-t="下班" ${!s.in||s.out?'disabled':''}>${ic('log-out','',17)}下班打卡</button>${s.out?(s.ext?`<button class="btn" type="button" data-a="extEnd">${ic('timer-reset','',17)}結束延長工作</button>`:`<button class="btn" type="button" data-a="extStart" ${s.extDone?'disabled':''}>${ic('timer-reset','',17)}${s.extDone?'延長工作已完成':'延長工作'}</button>`):''}<button class="btn" type="button" data-a="f3Toggle">${ic('coffee','',17)}F3 快速暫離</button><button class="btn quiet" type="button" data-a="f3Settings">暫離設定</button></div></div>`;
+  const clock=`<div class="clockpanel"><div><p class="eyebrow">${today} · ${esc(u.name)}</p><h2>${!s.segs.length?'尚未開始今日出勤':s.open?'上班中':s.pause?'休息中':'今日已完成出勤'}</h2><p>今天 ${segText(s)} · 下班時間 ${offTimes().join('、')}（彈性上班，不計遲到早退）${s.ext?`　延長工作 ${hm(s.ext.at)} 起`:''}</p>${otBlock(u.id)}</div><div class="row wrap"><button class="btn primary" type="button" data-a="punch" data-t="上班" ${s.open||s.out?'disabled':''}>${ic('log-in','',17)}上班打卡</button><button class="btn" type="button" data-a="punch" data-t="下班" ${!s.open?'disabled':''}>${ic('log-out','',17)}下班打卡</button>${s.out?(s.ext?`<button class="btn" type="button" data-a="extEnd">${ic('timer-reset','',17)}結束延長工作</button>`:`<button class="btn" type="button" data-a="extStart" ${s.extDone?'disabled':''}>${ic('timer-reset','',17)}${s.extDone?'延長工作已完成':'延長工作'}</button>`):''}<button class="btn" type="button" data-a="f3Toggle">${ic('coffee','',17)}F3 快速暫離</button><button class="btn quiet" type="button" data-a="f3Settings">暫離設定</button></div></div>`;
   return pagehead('出勤與進度','記錄出勤，讓工作交接有跡可循',`<button type="button" class="btn primary" data-a="editTask">${ic('plus','',17)}新增工作</button>`)+clock+
   `<section class="panel scheduled-work-center"><div class="panelhead"><div><p class="eyebrow">PLANNED WORK</p><h2>預定工作與稍後處理</h2><p>開始日前先集中收好，不塞進每天的工作看板。</p></div><button class="btn primary" type="button" data-a="editTask" data-plan="1">${ic('plus','',17)}替員工新增預定工作</button></div><div class="scheduled-work-grid">${planned.length?planned.map(t=>`<article><div><strong>${esc(t.title)}</strong><span>${esc(client(t.client).name)} · ${esc(staff(t.assignee).name)}</span><small>開始 ${md(t.start)} · 截止 ${md(t.due)}${t.remind?' · 提醒 '+esc(t.remind):''}${t.pre?' · 前置：'+esc(t.pre):''}</small></div><button class="btn small" type="button" data-a="editTask" data-id="${t.id}">修改</button></article>`).join(''):`<div class="empty">${ic('file-check-corner','',30)}<p>目前沒有尚未開始的預定工作</p></div>`}</div><p class="footnote">${ic('calendar-days','',15)}到達開始日後，系統會自動移入工作看板的「待處理」，並通知負責員工。</p></section>
   <section class="panel important-work-reminders"><div class="panelhead"><div><p class="eyebrow">IMPORTANT FOLLOW-UP</p><h2>重要工作追蹤提醒</h2><p>到提醒日仍未完成的工作會持續顯示，避免主管忙碌或老闆不在時被遺忘。</p></div><span class="badge ${important.length?'amber':'blue'}">${important.length} 項待追</span></div><div class="important-work-list">${important.map(t=>`<article>${ic('star','',20)}<div><strong>${esc(t.title)}</strong><span>${esc(client(t.client).name)} · ${esc(staff(t.assignee).name)} · ${esc(t.remind||'每週')}提醒${t.blocker?' · 卡點：'+esc(t.blocker):''}</span></div><span class="row"><button class="btn small" type="button" data-a="editTask" data-id="${t.id}">更新</button>${isAdmin()?'':`<button class="btn small quiet" type="button" data-a="taskToBoss" data-id="${t.id}">老闆必看</button>`}</span></article>`).join('')||'<p class="empty">目前沒有重要追蹤工作</p>'}</div></section>
@@ -1965,7 +2043,7 @@ STAFF.work=()=>{const u=me();const today=ymd(new Date());const sf=SESS.workStaff
     <div class="work-history-table"><div class="work-history-head"><span>紀錄日期</span><span>客戶／工作內容</span><span>承辦員工</span><span>狀態</span><span>紀錄摘要</span><span></span></div>${hist.map(t=>{const late=t.due<today&&t.status!=='已完成';const sa=staff(t.assignee);return `<article><time>${md(t.createdAt)}<small>${esc(t.id)}</small></time><div><strong>${esc(client(t.client).name)}</strong><span>${esc(t.title)}｜${esc(scopeLabel(t))}</span></div><div><strong>${esc(sa.name)}</strong>${sa.status!=='在職'?`<span class="badge red">${esc(sa.status)}</span>`:''}</div><div class="work-history-status">${st(tSt(t))}${t.rush?'<span class="badge amber">趕件</span>':''}${late?'<span class="badge red">逾期</span>':''}</div><p>${esc(t.note||'—')}<small>${t.blocker?'卡點：'+esc(t.blocker):'無卡點'} · 最後更新 ${t.updatedAt?mdhm(t.updatedAt):'尚未更新'}</small></p><button class="btn small" type="button" data-a="editTask" data-id="${t.id}">查看</button></article>`}).join('')||'<p class="empty">沒有符合條件的紀錄</p>'}</div></section>
   <section class="export-center panel"><div class="panelhead"><div><p class="eyebrow">可實際下載的示範報表</p><h2>工作與上班紀錄匯出</h2></div>${ic('download','',20)}</div><div class="export-grid"><article>${ic('file-spreadsheet','',22)}<div><strong>工作紀錄表</strong><span>案件、進度、承辦與截止日</span></div><button type="button" data-a="workExport">Excel</button><button type="button" data-a="saveReportVer">儲存網站版本</button></article><article>${ic('clock3','',22)}<div><strong>上班紀錄表</strong><span>班表、上下班、加班班次與工時</span></div><button type="button" data-a="attExport">Excel</button></article></div><p class="export-note">${ic('shield-check','',15)}匯出前會再檢查你的帳號權限，只會匯出你看得到的資料；每次匯出都會記錄操作者、時間與篩選條件。</p><div class="report-snapshot-list">${S.reportVersions.length?S.reportVersions.slice(0,3).map(v=>`<small>${mdhm(v.at)} · ${esc(v.by)} · ${esc(v.kind)}</small>`).join(''):'<small>尚未保存網站版本；更新工作資料後可直接建立新版本。</small>'}</div></section>
 
-  <section class="panel schedule-settings"><div class="panelhead"><div><p class="eyebrow">SHIFT SETTINGS</p><h2>員工出勤（彈性上班）</h2></div><span class="light">上班時間不固定，以實際打卡為準</span></div><div class="schedule-card-grid">${S.accounts.filter(a=>a.status==='在職').map(a=>{const ps=todayPunches(a.id);const i=ps.find(x=>x.type==='上班'),o=[...ps].reverse().find(x=>x.type==='下班'),t3=ps.find(x=>x.type==='第三班上班');return `<article><div><strong>${esc(a.name)}</strong><span>彈性上班</span></div><p>${ic('timer-reset','',17)}${i?`今日 ${hm(i.at)} 上班`:'今日尚未打卡'}</p><small>${o?`${hm(o.at)} 下班`:i?'上班中':'—'}${t3?` · 第三班 ${hm(t3.at)} 起`:''}</small></article>`}).join('')}</div>
+  <section class="panel schedule-settings"><div class="panelhead"><div><p class="eyebrow">SHIFT SETTINGS</p><h2>員工出勤（彈性上班）</h2></div><span class="light">上班不固定、不計遲到早退 · 下班時間 ${offTimes().join('、')} ${isAdmin()?'<button class="btn small quiet" type="button" data-a="offEdit">設定下班時間</button>':''}</span></div><div class="schedule-card-grid">${S.accounts.filter(a=>a.status==='在職').map(a=>{const ps=todayPunches(a.id);const i=ps.find(x=>x.type==='上班'),o=[...ps].reverse().find(x=>x.type==='下班'),t3=ps.find(x=>x.type==='第三班上班');return `<article><div><strong>${esc(a.name)}</strong><span>彈性上班</span></div><p>${ic('timer-reset','',17)}${i?`今日 ${segText(punchState(a.id))}`:'今日尚未打卡'}</p><small>${punchState(a.id).open?'上班中':i?'目前不在班':'—'}${t3?` · 第三班 ${hm(t3.at)} 起`:''}</small></article>`}).join('')}</div>
     <div class="wy-ot-settings"><div><strong>${ic('timer-reset','',16)}加班期間與第三班</strong><small>${overtimeReason()?'今天適用：'+esc(overtimeReason()):'今天沒有加班'} · 營業稅第三班 ${ot3().start}–${ot3().end} · 營業稅申報${S.officeSettings.vatAutoOvertime===false?'（已關閉自動）':'（單數月 1–15 日自動）'}</small></div><div class="wy-ot-chips">${otPeriods().map(x=>`<span>${esc(x.name)} ${md(x.from)}–${md(x.to)} · ${x.start||ot3().start}–${x.end||ot3().end}</span>`).join('')}</div>${isAdmin()?`<button class="btn small" type="button" data-a="otEdit">設定加班期間</button>`:''}</div></section>
   ${corr.length?`<section class="panel correction-panel"><div class="panelhead"><div><p class="eyebrow">ORIGINAL VALUE + APPROVAL</p><h2>出勤更正申請</h2></div><span class="light">原始打卡不覆寫 · 主管核准</span></div><div class="correction-list">${corr.map(c=>`<article><div class="row spread"><strong>${esc(staff(c.staff).name)} · ${ymd(c.at)}</strong>${st(c.status)}</div><p>原始：${esc(c.before)}</p><p>申請：${esc(c.after)}</p><small>${esc(c.reason)} · 申請人 ${esc(staff(c.staff).name)}</small>${isAdmin()&&c.status==='待主管回覆'?`<div class="row actions"><button class="btn primary small" type="button" data-a="corrDecide" data-id="${c.id}" data-v="已核准">核准</button><button class="btn quiet danger small" type="button" data-a="corrDecide" data-id="${c.id}" data-v="待補充">退回補充</button></div>`:''}</article>`).join('')}</div></section>`:''}
   <section class="panel attendance-table"><div class="panelhead"><h2>出勤紀錄</h2><span class="light">${isAdmin()?'全所':'本人'} · 台北時間 · 只有晚上 7 點後的打卡需要申請更正</span></div><div class="wy-table-wrap"><table class="wy-table"><thead><tr><th>員工</th><th>日期</th><th>上班</th><th>下班</th><th>繼續工作／加班</th><th>認定</th><th>更正</th></tr></thead><tbody>${attRows||'<tr><td colspan="7" class="wy-empty">尚無紀錄</td></tr>'}</tbody></table></div></section>`};
@@ -2569,6 +2647,90 @@ A.formDecide=d=>{if(d.s==='已拒絕'){modal('不核准原因',`<form class="flo
 F.formReject=o=>{mutate(S=>{const r=byId(S.formRequests,o.id);const f=byId(S.forms,r.form);r.status='已拒絕';r.note=o.note;r.decidedBy=me().name;r.decidedAt=nowISO();notifyClient(r.client,`空白表單「${f.name}」未核准：${o.note}`);log('不核准表單申請',client(r.client).name,f.name+'：'+o.note)});closeModal()};
 A.formEdit=d=>{const f=byId(S.forms,d.id)||{name:'',desc:'',version:'v1',fields:[],active:true};modal(f.id?'編輯表單':'新增表單',`<form class="flowform" data-f="formSave"><input type="hidden" name="id" value="${f.id||''}"><div class="formgrid">${field('表單名稱',`<input name="name" required maxlength="30" value="${esc(f.name)}">`)}${field('版本',`<input name="version" maxlength="10" value="${esc(f.version)}">`)}</div>${field('說明',`<input name="desc" maxlength="80" value="${esc(f.desc)}">`)}${field('欄位（一行一個）',`<textarea name="fields" rows="5">${esc(f.fields.join('\n'))}</textarea>`)}${permLine('active',f.active,'提供客戶申請')}${footer()}</form>`)};
 F.formSave=o=>{mutate(S=>{let f=byId(S.forms,o.id);if(!f){f={id:uid('F')};S.forms.push(f)}f.name=o.name;f.version=o.version||'v1';f.desc=o.desc;f.fields=o.fields.split('\n').map(x=>x.trim()).filter(Boolean);f.active=!!o.active;log('客戶表單',f.name,f.version)});closeModal()};
+
+/* ================= v6：公司行事曆整理、彈性打卡（只設下班時間）、客戶專區簡易傳檔 ================= */
+
+/* ---------- 公司行事曆：同月同類（收發票、客戶提醒）合併成一列；月曆與公告清單並排 ---------- */
+const CAL_MERGE_TYPES=['收發票','客戶提醒'];
+const calKey=e=>{const mk=e.date.slice(0,7);return CAL_MERGE_TYPES.includes(e.type)?`${mk}|${e.type}|${e.type==='收發票'?e.title:''}`:`${mk}|${e.type}|${e.title}`};
+function calGroups(list){const g=new Map();list.forEach(e=>{const k=calKey(e);if(!g.has(k))g.set(k,[]);g.get(k).push(e)});return [...g.values()].map(es=>es.sort((a,b)=>(a.date+(a.start||'')).localeCompare(b.date+(b.start||''))))}
+const mdShort=d=>`${+d.slice(5,7)}/${+d.slice(8,10)}`;
+function calRow(es){const e=es[0];const tl=e.type==='收發票'?'收發票':evTypeOf(e);const tag=`<span class="cal-type type-${esc(evTypeOf(e))}">${esc(tl)}</span>`;
+  if(es.length===1)return `<article class="cal-item"><div class="cal-when"><b>${mdShort(e.date)}</b><small>${esc(e.start||'')}${e.end?'–'+esc(e.end):''}</small></div><div class="cal-what"><strong>${esc(e.title)}</strong><small>${tag}<span>${esc(evScope(e))}</span></small></div><div class="cal-act"><button class="btn small quiet" type="button" data-a="calEvView" data-id="${e.id}">查看</button><button class="btn small quiet" type="button" data-a="newEvent" data-id="${e.id}">編輯</button><button class="btn small quiet danger" type="button" data-a="delEvent" data-id="${e.id}" aria-label="刪除 ${esc(e.title)}">${ic('trash-2','',14)}</button></div></article>`;
+  const first=es[0].date,last=es[es.length-1].date;const isRem=e.type==='客戶提醒';const title=isRem?`客戶收件提醒（${es.length} 位客戶）`:e.title;const ids=es.map(x=>x.id).join(',');
+  return `<article class="cal-item is-group"><div class="cal-when"><b>${mdShort(first)}</b><small>–${mdShort(last)}</small></div><div class="cal-what"><strong>${esc(title)}</strong><small>${tag}<span>${isRem?esc(es.map(x=>x.title.split('｜')[0]).join('、')):`${es.length} 天 · ${esc(evScope(e))}`}</span></small>
+    <details class="cal-days"><summary>逐日管理（${es.length} 則）</summary>${es.map(x=>`<div><span>${mdShort(x.date)} ${esc(x.start||'')} · ${esc(x.title)}</span><span class="row"><button class="btn small quiet" type="button" data-a="newEvent" data-id="${x.id}">編輯</button><button class="btn small quiet danger" type="button" data-a="delEvent" data-id="${x.id}" aria-label="刪除 ${mdShort(x.date)}">${ic('trash-2','',13)}</button></span></div>`).join('')}</details></div>
+    <div class="cal-act"><button class="btn small quiet danger" type="button" data-a="delEventGroup" data-ids="${ids}">整列刪除</button></div></article>`}
+A.delEventGroup=d=>{const ids=d.ids.split(',');const es=S.officeEvents.filter(e=>ids.includes(e.id));ask('整列刪除',`會一次刪除 ${es.length} 則「${esc(es[0]?.title||'')}」等行程，首頁與行事曆都不再顯示。`,()=>mutate(S=>{S.officeEvents=S.officeEvents.filter(e=>!ids.includes(e.id));log('整列刪除行程',es[0]?.title||'',es.length+' 則')}),'刪除')};
+A.calPast=()=>{SESS.calPast=!SESS.calPast;saveSess();render()};
+STAFF.calendar=()=>{const t=new Date();const today=ymd(t);const y=SESS.calY??t.getFullYear(),mo=SESS.calM??t.getMonth();
+  const evs={};S.officeEvents.forEach(e=>{const arr=(evs[e.date]=evs[e.date]||[]);if(e.type==='客戶提醒'){const r=arr.find(x=>x.merged);if(r){r.n++;r.t=`客戶收件提醒 ×${r.n}`;return}arr.push({t:'客戶收件提醒',time:e.start,type:'客戶提醒',id:e.id,merged:true,n:1});return}arr.push({t:e.title,time:e.start,type:evTypeOf(e),id:e.id})});
+  const upcoming=S.officeEvents.filter(e=>e.publicVisible&&e.date>=today).length;
+  const all=S.officeEvents.slice().sort((a,b)=>(a.date+(a.start||'')).localeCompare(b.date+(b.start||'')));const past=all.filter(e=>e.date<today);const shown=SESS.calPast?all:all.filter(e=>e.date>=today);
+  const groups=calGroups(shown);const months={};groups.forEach(g=>{const mk=g[0].date.slice(0,7);(months[mk]=months[mk]||[]).push(g)});
+  const listHTML=Object.keys(months).sort().map(mk=>`<div class="cal-month"><h3>${+mk.slice(0,4)-1911} 年 ${+mk.slice(5)} 月<small>${months[mk].length} 列</small></h3>${months[mk].map(calRow).join('')}</div>`).join('')||'<p class="empty">目前沒有近期行程或公告</p>';
+  return pagehead('公司行事曆','集中管理上課、聚餐、全所外出與首頁公告',`<div class="calendar-export-picker"><select class="choice" id="cal-exp" aria-label="選擇行事曆匯出類型">${opt([['boss','老闆行事曆'],['tax','收發票行事曆']])}</select><button type="button" class="btn calendar-export-link" data-a="calExport">${ic('file-spreadsheet','',17)}匯出 Excel</button></div><button class="btn" type="button" data-a="kitSchedEdit">${ic('file-check-corner','',17)}新增套組排程</button><button class="btn primary" type="button" data-a="newEvent">${ic('plus','',17)}新增行程／公告</button>`)+
+  `<div class="cal-layout"><section class="office-calendar-panel panel">${monthGrid(y,mo,{events:evs,nav:'calMonth',maxShow:3})}<div class="cal-legend">${[['課程研習','課程研習'],['公司聚餐','公司聚餐'],['全所外出','全所外出'],['其他公告','收發票／公告'],['客戶提醒','客戶收件提醒'],['已有預約','老闆行程']].map(([k,l])=>`<span><i class="office-event-pill type-${k}"></i>${l}</span>`).join('')}</div></section>
+  <section class="office-calendar-admin panel cal-list"><div class="panelhead"><div><p class="eyebrow">NOTICE MANAGEMENT</p><h2>公告管理清單</h2><p>同一個月重複的收發票、客戶收件提醒會合併成一列。</p></div><span class="calendar-count-mini">${ic('bell','',16)}${upcoming} 則近期公開</span></div>
+    <div class="office-calendar-admin-list">${listHTML}</div>${past.length?`<button class="cal-past" type="button" data-a="calPast">${SESS.calPast?'隱藏已過去的行程':`顯示已過去的行程（${past.length} 則）`}</button>`:''}</section></div>
+  <div class="sectionlabel cal-kits-label"><h2>行事曆套組排程</h2><span class="light">營業稅收件等固定排程；發布後會自動排進上方月曆</span></div>
+  ${S.collectionSchedules.map(sc=>{const b=byId(S.docBundles,sc.bundle)||{name:sc.bundleName||'',items:[]};const ds=sc.dates.slice().sort();return `<section class="fixed-collection-schedule panel cal-kit"><div class="fixed-collection-title"><span class="fixed-collection-icon">${ic('file-check-corner','',21)}</span><div><p class="eyebrow">${esc(sc.kind||'營業稅')} · 民國 ${sc.year} 年 ${esc(sc.period.replace('-','–'))} 月</p><h2>${esc(sc.name)}</h2><p>${ds.length?`收件 ${mdShort(ds[0])}–${mdShort(ds[ds.length-1])}`:'尚未排程'} · ${esc(sc.range)} ${sc.clients.length} 位客戶 · ${esc(staff(sc.staff).name)} 負責 · ${esc(b.name)}</p></div><span class="badge ${!sc.active?'':sc.pub==='draft'?'amber':sc.pub==='scheduled'?'blue':'green'}">${!sc.active?'已停用':sc.pub==='draft'?'草稿・未發布':sc.pub==='scheduled'?'預約 '+esc((sc.pubAt||'').replace('T',' ').slice(5))+' 發布':'已發布'}</span></div><div class="row wrap cal-kit-act"><button class="btn small" type="button" data-a="kitSchedEdit" data-id="${sc.id}">編輯套組</button>${sc.pub==='draft'||sc.pub==='scheduled'?`<button class="btn small primary" type="button" data-a="kitPublishNow" data-id="${sc.id}">${ic('send','',14)}立即發布</button>`:''}${ds.length?`<button class="btn small" type="button" data-a="calJump" data-d="${ds[0]}">${ic('calendar-days','',15)}跳到 ${Number(ds[0].slice(5,7))} 月</button>`:''}</div></section>`}).join('')}
+  <button class="schedule-kit-add panel" type="button" data-a="kitSchedEdit" data-kind="自訂">${ic('plus','',20)}<span><strong>新增其他行事曆套組</strong><small>自行命名、選文件與排日期。</small></span></button>`};
+
+/* ---------- 彈性打卡：不計遲到早退與工時，只設定下班時間（預設 12:30、18:30） ---------- */
+const offTimes=()=>S.officeSettings.offTimes||['12:30','18:30'];
+function punchSegs(p){const segs=[];let cur=null;p.forEach(x=>{if(x.type==='上班'){cur={in:x,out:null};segs.push(cur)}else if(x.type==='下班'&&cur&&!cur.out){cur.out=x}});return segs}
+punchState=function(sid){const p=todayPunches(sid);const last=p[p.length-1];const exts=S.extensions.filter(e=>e.staff===sid&&ymd(e.start)===ymd(new Date()));const segs=punchSegs(p);const ls=segs[segs.length-1];const open=!!(ls&&!ls.out);const evening=hm(new Date())>=offTimes()[1];
+  const finished=!open&&segs.length&&(evening||hm(ls.out.at)>=offTimes()[1]);
+  return {p,segs,open,in:segs[0]?segs[0].in:null,out:finished?ls.out:null,pause:!open&&segs.length&&!finished?ls.out:null,ext:last&&last.type==='繼續工作開始'?last:null,extDone:exts.some(e=>e.end),last}};
+const segText=s=>s.segs.map(x=>`${hm(x.in.at)}–${x.out?hm(x.out.at):'上班中'}`).join('、')||'—';
+const nextOff=()=>{const n=hm(new Date());return offTimes().find(t=>t>n)||offTimes()[1]};
+myAttendanceCard=function(){const u=me();const s=punchState(u.id);let time,line,main;
+  if(!s.segs.length){time='尚未打卡';line='彈性上班，到了就打卡';main=`<button type="button" class="btn full" data-a="punch" data-t="上班">${ic('log-in','',17)} 上班打卡</button>`}
+  else if(s.open){const i=s.segs[s.segs.length-1].in;time=hm(i.at);line=`上班中 · 下班時間 ${nextOff()}`;main=`<button type="button" class="btn full" data-a="punch" data-t="下班">${ic('log-out','',17)} 下班打卡</button>`}
+  else if(s.pause){time=hm(s.pause.at);line=`休息中 · ${hm(s.pause.at)} 下班，回來再打上班`;main=`<button type="button" class="btn full" data-a="punch" data-t="上班">${ic('log-in','',17)} 上班打卡</button>`}
+  else{time=hm(s.out.at);line='今日已下班';main=`<button type="button" class="btn full" disabled>${ic('log-out','',17)} 已完成今日打卡</button>`+(s.ext?`<button type="button" class="btn quiet" data-a="extEnd">${ic('timer-reset','',17)}結束延長工作（${hm(s.ext.at)} 起）</button>`:s.extDone?`<button type="button" class="btn quiet" disabled>${ic('timer-reset','',17)}延長工作已完成</button>`:`<button type="button" class="btn quiet" data-a="extStart">${ic('timer-reset','',17)}延長工作</button>`)}
+  return `<section class="attendance-mini"><div class="row spread"><h2>我的出勤</h2>${ic('clock3','',20)}</div><strong class="att-time">${time}</strong><p>${line}</p>${main}<p class="att-flex">${ic('timer-reset','',13)}今天 ${segText(s)} · 下班時間 ${offTimes().join('、')}</p>${otBlock(u.id)}</section>`};
+const __punch=A.punch;A.punch=d=>{const s=punchState(me().id);if(d.t==='上班'&&(s.open||s.out)){toast(s.out?'今天已下班；要繼續工作請按「延長工作」':'目前已是上班中');return}if(d.t==='下班'&&!s.open){toast('請先打上班卡');return}__punch(d)};
+A.offEdit=()=>{if(!isAdmin()){toast('需主帳權限');return}const [a,b]=offTimes();modal('設定下班時間',`<form class="flowform" data-f="offSave"><p class="contextline">上班彈性，不計遲到、早退或工時；只在下班時間提醒還在上班中的同仁打卡。</p><div class="formgrid">${field('中午下班',`<input type="time" name="a" value="${a}" required>`)}${field('傍晚下班',`<input type="time" name="b" value="${b}" required>`)}</div>${footer()}</form>`)};
+F.offSave=o=>{if(o.a>=o.b){toast('傍晚下班要晚於中午下班');return}mutate(S=>{S.officeSettings.offTimes=[o.a,o.b];log('設定下班時間','出勤',o.a+'、'+o.b)});closeModal()};
+/* 到下班時間還在上班中 → 提醒打卡（每人每個時間點一天一次） */
+setInterval(()=>{if(!S||!SESS.staff||!me())return;const n=hm(new Date());const s=punchState(me().id);if(!s.open)return;const t=offTimes().find(x=>x<=n&&n<=addMin(x,10));if(!t)return;const k='offRem|'+ymd(new Date())+'|'+t;if(SESS[k])return;SESS[k]=1;saveSess();toast(`${t} 下班時間到了，記得打下班卡`)},30000);
+function addMin(t,m){const [h,mi]=t.split(':').map(Number);const x=h*60+mi+m;return pad(Math.floor(x/60))+':'+pad(x%60)}
+
+/* ---------- 客戶專區：簡易傳送文件 ---------- */
+let CQ=[];
+const CQ_MAX=20*1024*1024;
+function cqPaint(){const box=$('#cqList'),send=$('#cqSend');if(!box)return;box.hidden=!CQ.length;send.hidden=!CQ.length;box.innerHTML=CQ.map((f,i)=>`<div class="cq-file"><span>${ic('file-text','',16)}</span><strong>${esc(f.name)}</strong><small>${(f.size/1024/1024).toFixed(1)} MB</small><button type="button" data-a="cqDel" data-i="${i}" aria-label="移除 ${esc(f.name)}">${ic('x','',14)}</button></div>`).join('');const b=$('#cqGo');if(b)b.textContent=`送出 ${CQ.length} 份文件`}
+function cqAdd(files){let big=0;[...files].forEach(f=>{if(f.size>CQ_MAX){big++;return}CQ.push(f)});if(big)toast(`${big} 份超過 20MB，請改用郵寄或分次上傳`);cqPaint()}
+C.cqPick=el=>{cqAdd(el.files);el.value=''};
+A.cqDel=d=>{CQ.splice(+d.i,1);cqPaint()};
+document.addEventListener('dragover',e=>{const z=e.target.closest&&e.target.closest('.cq-drop');if(z){e.preventDefault();z.classList.add('is-over')}});
+document.addEventListener('dragleave',e=>{const z=e.target.closest&&e.target.closest('.cq-drop');if(z)z.classList.remove('is-over')});
+document.addEventListener('drop',e=>{const z=e.target.closest&&e.target.closest('.cq-drop');if(!z)return;e.preventDefault();z.classList.remove('is-over');cqAdd(e.dataTransfer.files)});
+A.cqSend=()=>{if(!CQ.length)return;const cid=SESS.clientCo;const note=($('#cqNote')?.value||'').trim().slice(0,100);const files=CQ.map(f=>({name:f.name,size:f.size}));let matched=0;
+  mutate(S=>{const who=contactOf(SESS.client)?.name||'客戶';const ps=files.map(f=>intakeCore(S,{cid,name:f.name,size:f.size,via:'網站',sender:who,hint:''}));
+    ps.forEach(p=>{const r=S.docRequests.find(r=>r.client===cid&&r.state==='已發送'&&r.items.some(i=>i.report==='尚未回報'&&(i.name.includes(p.ai.type)||p.ai.type.includes(i.name))));if(r){const i=r.items.find(i=>i.report==='尚未回報'&&(i.name.includes(p.ai.type)||p.ai.type.includes(i.name)));i.report='已上傳';i.delivery='檔案上傳';i.file=p.orig;i.reportAt=nowISO();matched++}});
+    let th=roomOf(cid);if(!th){th={id:uid('CH'),client:cid,channel:'網站',category:'資料補件',status:'真人處理',assignee:client(cid).owner,title:client(cid).name,aiOff:true,notebook:'',msgs:[]};S.threads.unshift(th)}
+    th.msgs.push({id:uid('M'),by:'customer',name:who,text:note||`傳送了 ${files.length} 份文件`,files:files.map(f=>f.name),via:'網站',at:nowISO()});
+    notifyStaff(client(cid).owner,`${shortCo(client(cid).name)} 傳來 ${files.length} 份文件`,'naming');log('客戶傳送文件',client(cid).name,files.map(f=>f.name).join('、'))});
+  CQ=[];toast(`已送出 ${files.length} 份${matched?`，其中 ${matched} 份已對應到文圓需要的文件`:''}`)};
+A.cqNone=d=>mutate(S=>{const r=byId(S.docRequests,d.r);const i=byId(r.items,d.i);i.report='本期無資料';i.reportAt=nowISO();postDocNote(S,r,`「${i.name}」客戶回報：本期無資料`);log('客戶回報文件',client(r.client).name,`${i.name}：本期無資料`)});
+A.cqOther=()=>{const cid=SESS.clientCo;const items=S.docRequests.filter(r=>r.client===cid&&r.state==='已發送').flatMap(r=>r.items.filter(i=>!DONE_V.includes(i.verify)).map(i=>[r.id+'|'+i.id,`${i.name}（${r.period}）`]));
+  modal('改用郵寄或親送',`<form data-f="cqOther"><label>哪一份文件<select name="item" class="portal-choice">${opt([['','其他／多份文件'],...items])}</select></label><label>方式<select name="how" class="portal-choice">${opt(['郵寄','掛號','親送','到府收件'])}</select></label><label>補充（選填）<input name="note" maxlength="80" placeholder="例如：明天下午送到事務所"></label><div class="portal-dialog-actions"><button type="button" class="portal-btn" data-a="closeModal">取消</button><button class="portal-btn navy">告訴文圓</button></div></form>`,{cls:'portal-dialog',sub:'承辦人會在收到後幫你標示「文圓已收到」。'})};
+F.cqOther=o=>{const cid=SESS.clientCo;mutate(S=>{if(o.item){const [rid,iid]=o.item.split('|');const r=byId(S.docRequests,rid);const i=byId(r.items,iid);i.report=o.how==='親送'?'將親送':o.how==='到府收件'?'等待收件':'已寄出';i.delivery=o.how;i.note=o.note||i.note;i.reportAt=nowISO();postDocNote(S,r,`「${i.name}」客戶改用${o.how}${o.note?'：'+o.note:''}`)}else{chatSync(cid,`📮 ${contactOf(SESS.client)?.name||'客戶'} 將以${o.how}提供文件${o.note?'：'+o.note:''}`)}notifyStaff(client(cid).owner,`${shortCo(client(cid).name)} 將以${o.how}提供文件`,'documents');log('客戶改用實體交付',client(cid).name,o.how)});closeModal();toast('已通知文圓')};
+const cqItemState=i=>DONE_V.includes(i.verify)?['done','文圓已收到']:i.report==='本期無資料'?['done','本期無資料']:i.report!=='尚未回報'?['wait',`${i.report}，等待文圓確認`]:['todo','待提供'];
+CLIENT_TABS.docs=cid=>{const reqs=S.docRequests.filter(r=>r.client===cid&&r.state==='已發送');const files=S.portalDocs.filter(p=>p.client===cid).slice(0,8);const ships=S.shipments.filter(s=>s.client===cid);
+  setTimeout(cqPaint,0);
+  return `<section class="client-card client-page-card cq"><div class="client-card-head"><div><h2>傳送文件給文圓</h2><p>直接把檔案丟進來就好，不用改檔名、不用選類型。文圓會自動辨識整理，承辦人確認收到後會在下面打勾。</p></div></div>
+    <label class="cq-drop">${ic('upload','',30)}<strong>點這裡選擇檔案，或把檔案拖進來</strong><small>可一次選多份 · 照片、PDF、Word、Excel · 每份 20MB 內</small><input type="file" multiple hidden data-c="cqPick" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv"></label>
+    <div class="cq-list" id="cqList" hidden></div>
+    <div class="cq-send" id="cqSend" hidden><input class="cq-note" id="cqNote" maxlength="100" placeholder="想補充什麼嗎？（選填，例如：這是 9–10 月的發票）" aria-label="補充說明"><button class="portal-btn navy" id="cqGo" type="button" data-a="cqSend">送出</button></div>
+    <p class="cq-alt">不方便上傳？<button type="button" data-a="cqOther">改用郵寄或親送</button></p></section>
+  <section class="client-card client-page-card"><div class="client-card-head"><div><h2>文圓需要的文件</h2><p>上面送出的檔案會自動對應；也可以在這裡逐項上傳。</p></div></div>
+    ${reqs.map(r=>{const n=r.items.filter(i=>cqItemState(i)[0]==='done').length;return `<article class="cq-req"><header><div><h3>${esc(r.title)}</h3><small>${esc(r.period)} · ${roc(r.deadline)} 前</small></div><span class="cq-count">${n} / ${r.items.length}</span></header><div class="wy-meter"><i style="width:${Math.round(n/r.items.length*100)}%"></i></div>
+      ${r.items.map(i=>{const [k,lab]=cqItemState(i);return `<div class="cq-item is-${k}"><span class="cq-dot">${k==='done'?ic('check','',14):''}</span><div><strong>${esc(i.name)}</strong><small>${esc(lab)}${i.file?' · '+esc(i.file):''}</small></div>${k==='todo'?`<span class="cq-item-act"><label class="portal-btn small">${ic('upload','',14)}上傳<input type="file" hidden data-c="clientUpload" data-r="${r.id}" data-i="${i.id}" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"></label><button class="cq-none" type="button" data-a="cqNone" data-r="${r.id}" data-i="${i.id}">本期沒有</button></span>`:''}</div>`}).join('')}</article>`}).join('')||`<div class="client-empty">${ic('file-text')}<p>目前沒有需要提供的文件</p></div>`}</section>
+  <section class="client-card client-page-card"><div class="client-card-head"><div><h2>最近送出</h2></div></div><div class="document-list">${files.map(p=>`<article><span>${ic('file-text')}</span><div><strong>${esc(p.orig)}</strong><p>${esc(p.via||'網站')} · ${esc(p.size)}</p><small>${mdhm(p.uploadedAt)}</small></div>${pst(docReview(p)==='待審核'?'文圓整理中':'已收到')}</article>`).join('')}${ships.map(s=>`<article><span>${ic('mail')}</span><div><strong>${esc(s.op)}：${esc(s.contents.join('、'))}</strong><p>${esc(s.from)} → ${esc(s.to)} · ${esc(s.method)} ${esc(s.trackNo)}</p><small>${mdhm(s.createdAt)}</small></div>${s.status==='待客戶確認'?`<button class="portal-btn small navy" data-a="shipConfirm" data-id="${s.id}">確認收到</button>`:pst(s.status)}</article>`).join('')||'<div class="client-empty">'+ic('file-text')+'<p>尚無紀錄</p></div>'}</div></section>`};
 
 /* ================= 啟動 ================= */
 (function boot(){
