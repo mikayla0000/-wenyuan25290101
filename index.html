@@ -715,6 +715,7 @@ body:has(.public-site) .wenyuan-service-pet:not(.staff-pet).is-open{box-shadow:-
 .office-calendar-admin-list .cal-item{grid-template-columns:54px minmax(0,1fr)}
 .cal-act{grid-column:2;justify-content:flex-start;margin-top:-2px}
 .cal-act .btn.small{padding:4px 10px;min-height:0;font-size:12.5px}
+.kit-dup{display:flex;gap:8px;align-items:flex-start;background:#fff6e5;border:1px solid #f0d49a;color:#7a5a12;border-radius:12px;padding:10px 12px;font-size:13px;margin:8px 0}
 
 /* 原版圖示尺寸（由原版網站實測） */
 :where(.ai-assistant-icon svg.lucide-bot){width:24px;height:24px}
@@ -2731,6 +2732,20 @@ CLIENT_TABS.docs=cid=>{const reqs=S.docRequests.filter(r=>r.client===cid&&r.stat
     ${reqs.map(r=>{const n=r.items.filter(i=>cqItemState(i)[0]==='done').length;return `<article class="cq-req"><header><div><h3>${esc(r.title)}</h3><small>${esc(r.period)} · ${roc(r.deadline)} 前</small></div><span class="cq-count">${n} / ${r.items.length}</span></header><div class="wy-meter"><i style="width:${Math.round(n/r.items.length*100)}%"></i></div>
       ${r.items.map(i=>{const [k,lab]=cqItemState(i);return `<div class="cq-item is-${k}"><span class="cq-dot">${k==='done'?ic('check','',14):''}</span><div><strong>${esc(i.name)}</strong><small>${esc(lab)}${i.file?' · '+esc(i.file):''}</small></div>${k==='todo'?`<span class="cq-item-act"><label class="portal-btn small">${ic('upload','',14)}上傳<input type="file" hidden data-c="clientUpload" data-r="${r.id}" data-i="${i.id}" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"></label><button class="cq-none" type="button" data-a="cqNone" data-r="${r.id}" data-i="${i.id}">本期沒有</button></span>`:''}</div>`}).join('')}</article>`}).join('')||`<div class="client-empty">${ic('file-text')}<p>目前沒有需要提供的文件</p></div>`}</section>
   <section class="client-card client-page-card"><div class="client-card-head"><div><h2>最近送出</h2></div></div><div class="document-list">${files.map(p=>`<article><span>${ic('file-text')}</span><div><strong>${esc(p.orig)}</strong><p>${esc(p.via||'網站')} · ${esc(p.size)}</p><small>${mdhm(p.uploadedAt)}</small></div>${pst(docReview(p)==='待審核'?'文圓整理中':'已收到')}</article>`).join('')}${ships.map(s=>`<article><span>${ic('mail')}</span><div><strong>${esc(s.op)}：${esc(s.contents.join('、'))}</strong><p>${esc(s.from)} → ${esc(s.to)} · ${esc(s.method)} ${esc(s.trackNo)}</p><small>${mdhm(s.createdAt)}</small></div>${s.status==='待客戶確認'?`<button class="portal-btn small navy" data-a="shipConfirm" data-id="${s.id}">確認收到</button>`:pst(s.status)}</article>`).join('')||'<div class="client-empty">'+ic('file-text')+'<p>尚無紀錄</p></div>'}</div></section>`};
+
+/* ---------- 營業稅套組：同一年度同一期別只會有一個（再新增＝更新原本那一個） ---------- */
+const vatKitKey=sc=>sc&&(sc.kind||'營業稅')==='營業稅'?`${sc.year}|${sc.period}`:'';
+function dedupeVatKits(d){if(!d||!Array.isArray(d.collectionSchedules))return;const seen=new Map();const drop=new Set();
+  for(let i=d.collectionSchedules.length-1;i>=0;i--){const sc=d.collectionSchedules[i];const k=vatKitKey(sc);if(!k)continue;if(seen.has(k))drop.add(sc.id);else seen.set(k,sc.id)}
+  if(!drop.size)return;d.collectionSchedules=d.collectionSchedules.filter(sc=>!drop.has(sc.id));if(Array.isArray(d.officeEvents))d.officeEvents=d.officeEvents.filter(e=>!drop.has(e.scheduleId))}
+{const __rep6=repair;repair=function(d){d=__rep6(d);dedupeVatKits(d);return d}}
+const __kitSched=F.kitSched;
+F.kitSched=(o,f)=>{if(S.collectionSchedules.filter(sc=>vatKitKey(sc)).length!==new Set(S.collectionSchedules.map(vatKitKey).filter(Boolean)).size)mutate(S=>dedupeVatKits(S),{silent:true});if(o.kind==='營業稅'){const dup=S.collectionSchedules.find(sc=>sc.id!==o.id&&vatKitKey(sc)===`${+o.year}|${o.period}`);
+    if(dup){const moving=o.id;o.id=dup.id;if(moving)mutate(S=>{S.collectionSchedules=S.collectionSchedules.filter(sc=>sc.id!==moving);S.officeEvents=S.officeEvents.filter(e=>e.scheduleId!==moving)},{silent:true});__kitSched(o,f);setTimeout(()=>toast(`已有民國 ${o.year} 年 ${o.period.replace('-','–')} 月的營業稅套組，已直接更新原本那一個`),400);return}}
+  __kitSched(o,f)};
+/* 編輯視窗裡一選到已存在的期別就先提醒 */
+document.addEventListener('change',e=>{const f=e.target.closest&&e.target.closest('form[data-f=kitSched]');if(!f)return;const v=n=>f.querySelector(`[name=${n}]`)?.value;let box=f.querySelector('.kit-dup');if(!box){box=document.createElement('p');box.className='kit-dup';box.setAttribute('role','status');f.querySelector('.formgrid').after(box)}
+  const dup=v('kind')==='營業稅'&&S.collectionSchedules.find(sc=>sc.id!==v('id')&&vatKitKey(sc)===`${+v('year')}|${v('period')}`);box.hidden=!dup;if(dup)box.innerHTML=`${ic('triangle-alert','',15)}已有民國 ${v('year')} 年 ${v('period').replace('-','–')} 月的營業稅套組（${esc(dup.name)}）。儲存後會直接更新原本那一個，不會多出第二個。`});
 
 /* ================= 啟動 ================= */
 (function boot(){
